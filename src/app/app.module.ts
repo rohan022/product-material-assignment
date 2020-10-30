@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ProductsGridComponent } from './modules/components/products-grid/products-grid.component';
+import { ProductsComponent } from './modules/home/components/products/products/products.component';
+import { HeaderComponent } from './modules/header/components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsGridComponent
+    ProductsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
