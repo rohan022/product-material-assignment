@@ -28,23 +28,17 @@ export class AuthService {
     return throwError(
       'Something bad happened; please try again later.');
   };
-  getProducts(){
-
-
-   
-    console.log("Working");
-    return this.http.get(
-      'http://run.mocky.io/v3/ac12bc80-3dcc-42d0-b1a1-3b7986d40c54',
-      {responseType: 'json'})
-    // return this.http.get(`${this.url}`);
-    // return this.http
-    //   .get(
-    //     this.url
-    //   )
-    //   .pipe(catchError(this.handleError));
-  }
+  
   api(): Observable<any> {
     return this.http.get('https://5f9bc312856f4c00168c4482.mockapi.io/api/products/product');
+  }
+  postProduct(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    }
+    return this.http.post('https://5f9bc312856f4c00168c4482.mockapi.io/api/products/addproduct',httpOptions);
   }
 
 

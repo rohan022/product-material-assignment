@@ -2,94 +2,129 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <img src="/assets/img/icon-back.png" class="img_icon" routerLink="/">
-                <button type="button" class="btn btn-primary mt-2 mt-md-3 mt-lg-4" >Save</button>
+                <img src="/assets/img/icon-back.png" class="img_icon"
+                    routerLink="/">
+                <button type="button" class="btn btn-primary mt-2 mt-md-3
+                    mt-lg-4" (click)="SaveProduct()">Save</button>
                 <div class="card">
-                    
+
                     <div class="card-header card-header-danger card-head">
-                       
-                        
+
+
                         <h4 class="card-title">Add Product</h4>
-                       
+
                     </div>
                     <div class="card-body">
                         <form>
                             <div class="row">
                                 <div class="col-md-12 col_down">
                                     <mat-form-field class="input_field">
-                                       <p>Product name</p>
+                                        <p>Product name</p>
                                         <div>
-                                        <input matInput  [(ngModel)] = "prod_name" name="product"
-                                        value="value">
-                                        <!-- <mat-error>This field is required</mat-error> -->
+                                            <input matInput [(ngModel)]="prod_name"
+                                                name="product"
+                                                value="value">
+                                                 
+                                                 
+                                            <!-- <mat-error>This field is required</mat-error> -->
+                                        </div>
+                                        
+
+                                    </mat-form-field>
+                                    <div class="alert alert-danger" *ngIf="product_name == true" role="alert">
+                                     Product  Name Cannot be Empty
                                       </div>
-                                      
-                                      </mat-form-field>
-                                
+
                                 </div>
-                               
+
                             </div>
-                          
+
                             <div class="row">
                                 <div class="col-md-12 col_down">
-                                     
-                                    <mat-form-field class="example-chip-list input_field">
+
+                                    <mat-form-field class="example-chip-list
+                                        input_field">
                                         <p>Categories</p>
-                                        <mat-chip-list #chipList aria-label="Fruit selection">
-                                          <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
-                                                   [removable]="removable" (removed)="remove(fruit)">
-                                            {{fruit.name}}
-                                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                                          </mat-chip>
-                                         
-                                          <input 
-                                                 [matChipInputFor]="chipList"
-                                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                                                 [matChipInputAddOnBlur]="addOnBlur"
-                                                 (matChipInputTokenEnd)="add($event)">
+                                        <mat-chip-list #chipList
+                                            aria-label="Fruit selection">
+                                            <mat-chip *ngFor="let fruit of
+                                                fruits"
+                                                [selectable]="selectable"
+                                                [removable]="removable"
+                                                (removed)="remove(fruit)">
+                                                {{fruit.name}}
+                                                <mat-icon matChipRemove
+                                                    *ngIf="removable">cancel</mat-icon>
+                                            </mat-chip>
+
+                                            <input
+                                                [matChipInputFor]="chipList"
+                                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                [matChipInputAddOnBlur]="addOnBlur"
+                                                (matChipInputTokenEnd)="add($event)">
                                         </mat-chip-list>
-                                      </mat-form-field>
+                                    </mat-form-field>
+                                    <div class="alert alert-danger" *ngIf="cat_status == true" role="alert">
+                                       Categories cannot be empty
+                                       </div>
                                 </div>
 
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col_down">
-                                     
-                                    <mat-form-field class="example-chip-list input_field">
+
+                                    <mat-form-field class="example-chip-list
+                                        input_field">
                                         <p>Tags</p>
-                                        <mat-chip-list #chipList aria-label="Fruit selection">
-                                          <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
-                                                   [removable]="removable" (removed)="remove(fruit)">
-                                            {{fruit.name}}
-                                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                                          </mat-chip>
-                                         
-                                          <input 
-                                                 [matChipInputFor]="chipList"
-                                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                                                 [matChipInputAddOnBlur]="addOnBlur"
-                                                 (matChipInputTokenEnd)="add($event)">
+                                        <mat-chip-list #chipList
+                                            aria-label="Fruit selection">
+                                            <mat-chip *ngFor="let tag of
+                                            tags"
+                                                [selectable]="selectable"
+                                                [removable]="removable"
+                                                (removed)="removeTags(tag)">
+                                                {{tag.name}}
+                                                <mat-icon matChipRemove
+                                                    *ngIf="removable">cancel</mat-icon>
+                                            </mat-chip>
+
+                                            <input
+                                                [matChipInputFor]="chipList"
+                                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                [matChipInputAddOnBlur]="addOnBlur"
+                                                (matChipInputTokenEnd)="addTags($event)">
                                         </mat-chip-list>
-                                      </mat-form-field>
+                                    </mat-form-field>
+                                    <div class="alert alert-danger" *ngIf="tag_status == true" role="alert">
+                                        Tags cannot be empty
+                                    </div>
                                 </div>
 
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col_down">
-                                   
-                                  <mat-form-field class="example-full-width input_field">
-                                    <p>Price</p>
-                                    <input matInput  type="text">
-                                  </mat-form-field>
+
+                                    <mat-form-field class="example-full-width
+                                        input_field">
+                                        <p>Price</p>
+                                        <input matInput type="number" [(ngModel)]="price" name="price" >
+                                    </mat-form-field>
+                                    <div class="alert alert-danger" *ngIf="price_status == true" role="alert">
+                                        Price cannot be empty
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col_down">
-                                   
-                                  <mat-form-field class="example-full-width input_field">
-                                    <p>Quantitys</p>
-                                    <input matInput  type="text">
-                                  </mat-form-field>
+
+                                    <mat-form-field class="example-full-width
+                                        input_field">
+                                        <p>Quantity</p>
+                                        <input matInput type="number" [(ngModel)]="quantity" name="Quantity">
+                                    </mat-form-field>
+                                    <div class="alert alert-danger" *ngIf="quantity_status == true" role="alert">
+                                        Quantity cannot be empty
+                                    </div>
                                 </div>
                             </div>
                         </form>
