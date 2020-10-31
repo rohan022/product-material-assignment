@@ -10,7 +10,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { MatFormFieldModule, MatInputModule, MatChipsModule } from '@angular/material';
 
 @NgModule({
-  declarations: [ProductsComponent, ProductAddComponent],
+  declarations: [],
   imports: [
     CommonModule,
     HomeRoutingModule,

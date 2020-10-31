@@ -47,12 +47,12 @@
                                         <p>Categories</p>
                                         <mat-chip-list #chipList
                                             aria-label="Fruit selection">
-                                            <mat-chip *ngFor="let fruit of
+                                            <mat-chip *ngFor="let category of
                                                 fruits"
                                                 [selectable]="selectable"
                                                 [removable]="removable"
-                                                (removed)="remove(fruit)">
-                                                {{fruit.name}}
+                                                (removed)="remove(category)">
+                                                {{category.name}}
                                                 <mat-icon matChipRemove
                                                     *ngIf="removable">cancel</mat-icon>
                                             </mat-chip>
