@@ -1,1 +1,101 @@
-<p>product-add works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="/assets/img/icon-back.png" class="img_icon" routerLink="/">
+                <button type="button" class="btn btn-primary mt-2 mt-md-3 mt-lg-4" >Save</button>
+                <div class="card">
+                    
+                    <div class="card-header card-header-danger card-head">
+                       
+                        
+                        <h4 class="card-title">Add Product</h4>
+                       
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-12 col_down">
+                                    <mat-form-field class="input_field">
+                                       <p>Product name</p>
+                                        <div>
+                                        <input matInput  [(ngModel)] = "prod_name" name="product"
+                                        value="value">
+                                        <!-- <mat-error>This field is required</mat-error> -->
+                                      </div>
+                                      
+                                      </mat-form-field>
+                                
+                                </div>
+                               
+                            </div>
+                          
+                            <div class="row">
+                                <div class="col-md-12 col_down">
+                                     
+                                    <mat-form-field class="example-chip-list input_field">
+                                        <p>Categories</p>
+                                        <mat-chip-list #chipList aria-label="Fruit selection">
+                                          <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                                                   [removable]="removable" (removed)="remove(fruit)">
+                                            {{fruit.name}}
+                                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                          </mat-chip>
+                                         
+                                          <input 
+                                                 [matChipInputFor]="chipList"
+                                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                 [matChipInputAddOnBlur]="addOnBlur"
+                                                 (matChipInputTokenEnd)="add($event)">
+                                        </mat-chip-list>
+                                      </mat-form-field>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col_down">
+                                     
+                                    <mat-form-field class="example-chip-list input_field">
+                                        <p>Tags</p>
+                                        <mat-chip-list #chipList aria-label="Fruit selection">
+                                          <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                                                   [removable]="removable" (removed)="remove(fruit)">
+                                            {{fruit.name}}
+                                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                          </mat-chip>
+                                         
+                                          <input 
+                                                 [matChipInputFor]="chipList"
+                                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                 [matChipInputAddOnBlur]="addOnBlur"
+                                                 (matChipInputTokenEnd)="add($event)">
+                                        </mat-chip-list>
+                                      </mat-form-field>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col_down">
+                                   
+                                  <mat-form-field class="example-full-width input_field">
+                                    <p>Price</p>
+                                    <input matInput  type="text">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 col_down">
+                                   
+                                  <mat-form-field class="example-full-width input_field">
+                                    <p>Quantitys</p>
+                                    <input matInput  type="text">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

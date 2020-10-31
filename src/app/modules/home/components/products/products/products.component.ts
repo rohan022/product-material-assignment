@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-products',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-
-  constructor() { }
+  products:any=[];
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
+    this.mockAPI();
   }
+  mockAPI() {
+    this.auth.api().subscribe(res => {
+      this.products = res;
+      console.log("products",this.products);
+    });
+  }
+ 
 
 }

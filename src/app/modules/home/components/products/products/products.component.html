@@ -4,7 +4,10 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger card-head">
-                        <h4 class="card-title">Products</h4>
+                        <button type="button" class="btn btn-primary mt-2 mt-md-3 mt-lg-4" routerLink="/product">Add Product</button>
+                       
+                        <h4 class="card-title title">Products</h4>
+                       
                         <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
                     </div>
                     <div class="card-body">
@@ -30,6 +33,33 @@
                                         Active
                                     </th>
                                 </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of products">
+                                        <td>
+                                            {{product.id}}
+                                        </td>
+                                        <td>
+                                            {{product.name}}
+                                        </td>
+                                        <td>
+                                            {{product.category}}
+                                        </td>
+                                        <td>
+                                            &#8377; {{product.price}}
+                                        </td>
+                                        <td>
+                                            {{product.quantity}}
+                                        </td>
+                                        <td>
+                                            <div *ngIf="product.status === true">
+                                                <img src="/assets/img/check.png" class="img_icon">
+                                            </div>
+                                            <div *ngIf="product.status === false">
+                                                <img src="/assets/img/cross.png" class="img_icon">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
