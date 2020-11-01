@@ -75,43 +75,36 @@ export class ProductAddComponent implements OnInit {
     }
 
   }
-  product_name:any= false;
-  cat_status:any = false;
-  tag_status:any = false;
-  price_status:any = false;
-  quantity_status:any = false;
+ 
+ 
   constructor(private auth: AuthService,public router:Router) {}
 
   ngOnInit() {}
   SaveProduct() {
     if(this.prod_name == null || this.prod_name  == undefined || this.prod_name == ""){
-      this.product_name = true;
+      
+      Swal.fire('Error!','Product Name Cannot be Empty', 'warning');
       return;
     }
     else if (this.fruits.length == 0) {
-      this.cat_status = true;
+      Swal.fire('Error!','Categories Cannot be Empty', 'warning');
       return;
       
     } else if (this.tags.length == 0) {
-      this.tag_status = true;
+      Swal.fire('Error!','Tags Cannot be Empty', 'warning');
       return;
     }else if( this.price == null || this.price == undefined || this.price == ""){
-      this.price_status = true;
+      Swal.fire('Error!','Price Cannot be Empty', 'warning');
       return;
     }else if(this.quantity == null || this.quantity  == undefined || this.quantity == ""){
-      this.quantity_status = true;
+      Swal.fire('Error!','Quantity Cannot be Empty', 'warning');
       return;
     }
      else {
-      this.product_name = false;
-      this.cat_status = false;
-      this.tag_status = false;
-      this.price_status = false;
-      this.quantity_status = false;
       this.auth.postProduct().subscribe((res: any) => {
 
         console.log("Message", res);
-        Swal.fire('Done!',res.message, 'success')
+        Swal.fire('Done!',res.message, 'success');
         this.router.navigate(['/']);
       });
     }

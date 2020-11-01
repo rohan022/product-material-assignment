@@ -22,7 +22,7 @@
                                         <p>Product name</p>
                                         <div>
                                             <input matInput [(ngModel)]="prod_name"
-                                                name="product"
+                                                name="product" class="input_product"
                                                 value="value">
                                                  
                                                  
@@ -31,9 +31,7 @@
                                         
 
                                     </mat-form-field>
-                                    <div class="alert alert-danger" *ngIf="product_name == true" role="alert">
-                                     Product  Name Cannot be Empty
-                                      </div>
+                                   
 
                                 </div>
 
@@ -43,7 +41,7 @@
                                 <div class="col-md-12 col_down">
 
                                     <mat-form-field class="example-chip-list
-                                        input_field">
+                                        input_field  ">
                                         <p>Categories</p>
                                         <mat-chip-list #chipList
                                             aria-label="Fruit selection">
@@ -61,12 +59,11 @@
                                                 [matChipInputFor]="chipList"
                                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                                 [matChipInputAddOnBlur]="addOnBlur"
-                                                (matChipInputTokenEnd)="add($event)">
+                                                (matChipInputTokenEnd)="add($event)"
+                                                class="input_product">
                                         </mat-chip-list>
                                     </mat-form-field>
-                                    <div class="alert alert-danger" *ngIf="cat_status == true" role="alert">
-                                       Categories cannot be empty
-                                       </div>
+                                   
                                 </div>
 
                             </div>
@@ -74,7 +71,7 @@
                                 <div class="col-md-12 col_down">
 
                                     <mat-form-field class="example-chip-list
-                                        input_field">
+                                        input_field ">
                                         <p>Tags</p>
                                         <mat-chip-list #chipList
                                             aria-label="Fruit selection">
@@ -92,12 +89,11 @@
                                                 [matChipInputFor]="chipList"
                                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                                 [matChipInputAddOnBlur]="addOnBlur"
-                                                (matChipInputTokenEnd)="addTags($event)">
+                                                (matChipInputTokenEnd)="addTags($event)"
+                                                class="input_product">
                                         </mat-chip-list>
                                     </mat-form-field>
-                                    <div class="alert alert-danger" *ngIf="tag_status == true" role="alert">
-                                        Tags cannot be empty
-                                    </div>
+                                    
                                 </div>
 
                             </div>
@@ -107,11 +103,9 @@
                                     <mat-form-field class="example-full-width
                                         input_field">
                                         <p>Price</p>
-                                        <input matInput type="number" [(ngModel)]="price" name="price" >
+                                        <input matInput type="number" [(ngModel)]="price" name="price" class="input_product" >
                                     </mat-form-field>
-                                    <div class="alert alert-danger" *ngIf="price_status == true" role="alert">
-                                        Price cannot be empty
-                                    </div>
+                                  
                                 </div>
                             </div>
                             <div class="row">
@@ -120,11 +114,9 @@
                                     <mat-form-field class="example-full-width
                                         input_field">
                                         <p>Quantity</p>
-                                        <input matInput type="number" [(ngModel)]="quantity" name="Quantity">
+                                        <input matInput type="number" [(ngModel)]="quantity" class="input_product" name="Quantity">
                                     </mat-form-field>
-                                    <div class="alert alert-danger" *ngIf="quantity_status == true" role="alert">
-                                        Quantity cannot be empty
-                                    </div>
+                                  
                                 </div>
                             </div>
                         </form>
