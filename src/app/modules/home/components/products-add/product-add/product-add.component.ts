@@ -25,7 +25,7 @@ export class ProductAddComponent implements OnInit {
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruits: Fruit[] = [];
+  categories: Fruit[] = [];
   tags: Tag[] = [];
   add(event: MatChipInputEvent): void {
     const input = event.input;
@@ -33,7 +33,7 @@ export class ProductAddComponent implements OnInit {
 
     // Add our fruit
     if ((value || "").trim()) {
-      this.fruits.push({ name: value.trim() });
+      this.categories.push({ name: value.trim() });
     }
 
     // Reset the input value
@@ -59,15 +59,13 @@ export class ProductAddComponent implements OnInit {
 
 
   remove(fruit: Fruit): void {
-   
-    const index = this.fruits.indexOf(fruit);
+    const index = this.categories.indexOf(fruit);
 
     if (index >= 0) {
-      this.fruits.splice(index, 1);
+      this.categories.splice(index, 1);
     }
   }
   removeTags(tag: Tag){
-   
     const index = this.tags.indexOf(tag);
 
     if (index >= 0) {
@@ -75,40 +73,34 @@ export class ProductAddComponent implements OnInit {
     }
 
   }
- 
- 
-  constructor(private auth: AuthService,public router:Router) {}
+  constructor(private auth: AuthService, public router: Router) {}
 
   ngOnInit() {}
   SaveProduct() {
     if(this.prod_name == null || this.prod_name  == undefined || this.prod_name == ""){
-      
-      Swal.fire('Error!','Product Name Cannot be Empty', 'warning');
+
+      Swal.fire('Warning!', 'Product Name Cannot be Empty', 'warning');
       return;
-    }
-    else if (this.fruits.length == 0) {
-      Swal.fire('Error!','Categories Cannot be Empty', 'warning');
+    } else if (this.categories.length == 0) {
+      Swal.fire('Warning!', 'Categories Cannot be Empty', 'warning');
       return;
-      
+
     } else if (this.tags.length == 0) {
-      Swal.fire('Error!','Tags Cannot be Empty', 'warning');
+      Swal.fire('Warning!','Tags Cannot be Empty', 'warning');
       return;
-    }else if( this.price == null || this.price == undefined || this.price == ""){
-      Swal.fire('Error!','Price Cannot be Empty', 'warning');
+    } else if( this.price == null || this.price == undefined || this.price == ""){
+      Swal.fire('Warning!','Price Cannot be Empty', 'warning');
       return;
-    }else if(this.quantity == null || this.quantity  == undefined || this.quantity == ""){
-      Swal.fire('Error!','Quantity Cannot be Empty', 'warning');
+    } else if(this.quantity == null || this.quantity  == undefined || this.quantity == ""){
+      Swal.fire('Warning!','Quantity Cannot be Empty', 'warning');
       return;
-    }
-     else {
+    } else {
       this.auth.postProduct().subscribe((res: any) => {
 
         console.log("Message", res);
-        Swal.fire('Done!',res.message, 'success');
+        Swal.fire('Done!', res.message, 'success');
         this.router.navigate(['/']);
       });
     }
-   
-   
   }
 }

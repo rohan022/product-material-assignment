@@ -26,7 +26,7 @@
                                                 value="value">
                                                  
                                                  
-                                            <!-- <mat-error>This field is required</mat-error> -->
+                                           
                                         </div>
                                         
 
@@ -46,7 +46,7 @@
                                         <mat-chip-list #chipList
                                             aria-label="Fruit selection">
                                             <mat-chip *ngFor="let category of
-                                                fruits"
+                                                categories"
                                                 [selectable]="selectable"
                                                 [removable]="removable"
                                                 (removed)="remove(category)">
